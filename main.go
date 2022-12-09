@@ -73,7 +73,7 @@ func zipFiles(ctx context.Context) (string, error) {
 	writer := zip.NewWriter(zipArchive)
 	defer func() { _ = writer.Close() }()
 
-	if err := generateAndWriteHTML(err, writer, names); err != nil {
+	if err := generateAndWriteHTML(writer, names); err != nil {
 		return "", err
 	}
 
@@ -96,7 +96,7 @@ func zipFiles(ctx context.Context) (string, error) {
 	return zipArchive.Name(), nil
 }
 
-func generateAndWriteHTML(err error, writer *zip.Writer, imgNames []string) error {
+func generateAndWriteHTML(writer *zip.Writer, imgNames []string) error {
 	tpl, err := template.New("index").Parse(htmlTemplate)
 	if err != nil {
 		return err
