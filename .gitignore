@@ -1,0 +1,12 @@
+# editors
+.idea
+
+# Mac OS
+.DS_Store
+
+# terraform assets
+.terraform*
+*.tfstate*
+
+# output
+downloads
